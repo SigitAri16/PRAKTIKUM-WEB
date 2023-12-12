@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hitung Jumlah Bilangan</title>
+</head>
+<body>
+
+  <label for="bilangan1">Bilangan 1:</label>
+  <br>
+  <input type="number" id="bilangan1" onchange="hitungJumlah()">
+  <br>
+  <br>
+
+  <label for="bilangan2">Bilangan 2:</label>
+  <br>
+  <input type="number" id="bilangan2">
+  <br>
+  <br>
+  <button onclick="hitungJumlah()">Hasil Jumlah Bilangan</button>
+
+
+  <p>Hasil Jumlah: <span id="hasil"></span></p>
+
+  <script>
+    function hitungJumlah() {
+      // Ambil nilai dari kedua input
+      const bilangan1 = parseFloat(document.getElementById('bilangan1').value);
+      const bilangan2 = parseFloat(document.getElementById('bilangan2').value);
+
+      
+      const jumlah = bilangan1 + bilangan2;
+
+      document.getElementById('hasil').textContent = jumlah;
+    }
+  </script>
+
+</body>
+</html>
