@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+</head>
+<h2>Login </h2>
+<form id="loginform" onsubmit="Login() ">
+    <label for="username">Username: </label>
+    <input type="text" id="username" name="username" required /> <br /> <br />
+    <label for="password">Password: </label>
+    <input type="text" id="password" name="password" required />
+    <br> <br>
+    <input type="submit" value="Login" />
+    
+</form>
+<script>
+    function Login () {
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+        if (username === "admin" && password === "123"){
+            window.location.href = "baru.html"
+            alert ("Login berhasil");
+        } else {
+            alert ("Login gagal. Coba lagi.");
+        }      
+    }
+</script>
+<body>
+    
+</body>
+</html>
