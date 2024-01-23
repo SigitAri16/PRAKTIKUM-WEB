@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bootstrap demo</title>
+    <!-- Boostrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body> 
+<body>
+    <h1>Booking Periksa Kesehatan Gigi <span class="judul2">(ONLINE)</span></h1>
+    <section class="form">
+        <div class="container mt-3">
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <div class="alert alert-success alert-dismissible fade show d-none" role="alert">
+                        <strong>ThankYou Guys ^^ !</strong> Pesan anda sudah diterima.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <form name="Booking">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nama Pasien</label>
+                            <input type="text" class="form-control" id="name" placeholder="Masukkan Nama Anda"
+                                name="Nama Pasien" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dokter" class="form-label">Pilih Dokter</label>
+                            <select name="Dokter" class="form-control-select" id="dokter" required>
+                                <option value="0" disabled selected hidden>Nama Dokter</option>
+                                <option value="Dr. Raehan Nur">Dr. Raehan Nur</option>
+                                <option value="Dr. Sigit Ariyanto">Dr. Sigit Ariyanto</option>
+                                <option value="Dr. Perdi Satriama">Dr. Perdi Satriama</option>
+                                <option value="Dr. Fauzi Aflah">Dr. Fauzi Aflah</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="layanan" class="form-label">Pilih Layanan</label>
+                            <select name="Layanan" class="form-control-select" id="layanan" required>
+                                <option value="0" disabled selected hidden>Layanan</option>
+                                <option value="Perawatan Gigi Anak">Perawatan Gigi Anak</option>
+                                <option value="Pembersihan Karang Gigi">Pembersihan Karang Gigi</option>
+                                <option value="Pemutihan Gigi">Pemutihan Gigi</option>
+                                <option value="Cabut Gigi">Cabut Gigi</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="keluhan" class="form-label">Keluhan</label>
+                            <textarea name="Keluhan" id="keluhan" class="form-control"
+                                placeholder="Masukkan Keluhan Anda" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pembayaran" class="form-label">Pembayaran</label><br>
+                            <div class="container-pembayaran">
+                                <input type="radio" name="Pembayaran" id="cash" value="Cash"> Cash <br>
+                                <input type="radio" name="Pembayaran" id="debit" value="Debit"> Debit <br>
+                                <input type="radio" name="Pembayaran" id="Transfer" value="Transfer"> Transfer <br>
+                                <input type="radio" name="Pembayaran" id="e-Wallet" value="e-Wallet"> e-Wallet <br>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="umur" class="form-label-umur">Umur</label>
+                            <input type="number" class="form-umur" id="umur" name="Umur" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="noTelp" class="form-label">No.Telp</label>
+                            <input type="text" class="form-control" id="noTelp"
+                                placeholder="Masukkan Nomer Telepon Anda" name="No.Telp" required minlength="11"
+                                maxlength="13">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="Email" placeholder="Masukkan Email Anda"
+                                aria-describedby="emailHelp" name="Email" required>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-kirim">Simpan Data</button>
+                        <button class="btn btn-success btn-loading d-none" type="button" disabled>
+                            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                            <span role="status">Loading...</span>
+                        </button>
+                        <button type="reset" class="btn btn-danger"><a href="/index.html"
+                                class="text-light text-decoration-none">Batal</a></button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/138e30ea05.js" crossorigin="anonymous"></script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzh7jgsCOkG8ge4aodtX8O4nZzoYktIhlvgZimszLf5LyTpmfDZB5NdXroou2VnuhpY/exec'
+        const form = document.forms['Booking']
+        const btnKirim = document.querySelector('.btn-kirim');
+        const btnLoading = document.querySelector('.btn-loading');
+        const alertSaya = document.querySelector('.alert');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            // ketika tombol submit diklik
+            // tampilkan loadingnya, hilangkan tombol kirimnya
+            btnLoading.classList.toggle('d-none');
+            btnKirim.classList.toggle('d-none');
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    // tampilkan tombol kirimnya semula dan hilangkan tombol loading
+                    btnLoading.classList.toggle('d-none');
+                    btnKirim.classList.toggle('d-none');
+                    alertSaya.classList.toggle('d-none');
+                    form.reset();
+                    console.log('Success!', response)
+                })
+                .catch(error => { console.error('Error!', error.message) })
+        })
+    </script>
+</body>
+
+</html>

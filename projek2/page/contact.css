@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+/* body */
+body {
+  background-image: url(./img/gedungsttnf.jpg);
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+/* Akhir body */
+
+/* judul */
+h2.judul {
+  color: yellow;
+  font-weight: bold;
+}
+
+.contactus h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+/* Akhir Judul */
+
+/* Card */
+.content .card {
+  box-shadow: 7px 7px 7px;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+.card-body {
+  background-color: gray;
+  border-radius: 5px;
+}
+
+img {
+  width: 100px;
+  height: 110px;
+  border-radius: 100%;
+}
+/* Akhir Card */
+
+/* button */
+button a {
+  color: white;
+  text-decoration: none;
+}
+
+.btn {
+  box-shadow: 5px 5px 5px black;
+  width: 100%;
+}
+
+button.btn:hover {
+  background-color: black;
+  transform: scale(0.9);
+  transition: 0.8s;
+}
+
+button.btn-instagram:hover {
+  background-color: red;
+}
+
+button.btn-back:hover {
+    background-color: blue;
+    transform: scale(1.0);
+    transition: 0.5s;
+    text-decoration: underline;
+}
+
+button.btn-back {
+    width: 7rem;
+}
+
+.kembali {
+    display: flex;
+    justify-content: center;
+}
+/* akhir button */
+
+
+/* Sub Judul */
+h5.phone {
+  color: rgb(12, 218, 12);
+}
+
+h5.email {
+  color: blue;
+}
+/* Akhir Sub Judul */

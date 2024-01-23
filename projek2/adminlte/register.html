@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Klinik Gigi</title>
+    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://adminlte.io/themes/v3/dist/css/adminlte.min.css">
+    <script src="https://adminlte.io/themes/v3/plugins/jquery/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js"></script>
+    <script src="https://adminlte.io/themes/v3/dist/js/adminlte.min.js"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <style>
+        body {
+            background-image: url(../img/bg.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .register-box {
+            width: 400px;
+            text-align: center;
+        }
+
+        .card {
+            text-align: left;
+        }
+
+        .btn-register {
+            margin-top: 10px;
+            width: 100%;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+        }
+
+        #regis:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body class="hold-transition register-page">
+    <div class="register-box">
+        <div class="card card-outline card-success">
+            <div class="card-header text-center">
+                <h1 class="font-weight-bold">Register Klinik Gigi</h1>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Bergabung dengan kami</p>
+
+                <form id="registerForm">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Full name" id="fullName" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email" id="email" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Password" id="password" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" id="regis"
+                                class="btn btn-success btn-block btn-register">Register</button>
+                        </div>
+                    </div>
+                </form>
+
+                <p class="mt-3">
+                    Sudah punya akun? <a href="Login.html">Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            registerUser();
+        });
+
+        function registerUser() {
+            var fullName = document.getElementById("fullName").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            // Register user with Firebase Authentication
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(function (userCredential) {
+                    // Signed in
+                    var user = userCredential.user;
+                    console.log("Registration Success:", user);
+
+                    // Customize this part based on your needs (e.g., store additional user information)
+                    alert("Registration success! Redirecting to login page.");
+                    <a herf="Login.html"> </a>
+                })
+                .catch(function (error) {
+                    console.error("Registration Error:", error.message);
+                    alert("Registration Error. Please try again.");
+                });
+        }
+    </script>
+</body>
+
+</html>

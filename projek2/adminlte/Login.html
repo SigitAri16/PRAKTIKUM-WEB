@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Klinik Gigi</title>
+    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://adminlte.io/themes/v3/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://adminlte.io/themes/v3/plugins/jquery/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js"></script>
+    <script src="https://adminlte.io/themes/v3/dist/js/adminlte.min.js"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <style>
+        body {
+            background-image: url(../img/bg.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .login-box {
+            width: 400px;
+            text-align: center;
+        }
+
+        .card {
+            text-align: left;
+        }
+
+        .btn-signin,
+        .btn-google-signin,
+        .btn-register {
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .btn-google-signin {
+            background-color: #ea4335;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-register {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+        }
+
+        #signin:hover,
+        #googleSignIn:hover,
+        #registerButton:hover {
+            text-decoration: underline;
+        }
+
+        #forgotPasswordLink:hover {
+            color: black;
+            transition: 0.5s;
+        }
+    </style>
+</head>
+
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <h1 class="font-weight-bold">Klinik Gigi Sipefara</h1>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Login Dulu yuk kalo Mau Periksa Gigi</p>
+
+                <form id="loginForm">
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email" id="email" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Password" id="password" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" id="signin" class="btn btn-primary btn-block btn-signin">Sign
+                                In</button>
+                        </div>
+                    </div>
+                </form>
+
+                <p class="mb-1 mt-3">
+                    <a href="#" id="forgotPasswordLink">I forgot my password</a>
+                </p>
+
+                <button type="button" id="googleSignIn" class="btn btn-danger btn-block btn-google-signin">
+                    <i class="fab fa-google"></i> Sign in with Google
+                </button>
+
+                <button type="button" id="registerButton" class="btn btn-success btn-block btn-register">
+                    Register
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var loginSuccessful = false;
+
+            // Perform login action here (you can add AJAX request to the server)
+            if (email === "sigit123@gmail.com" && password === "sigit") {
+                loginSuccessful = true;
+            } else if (email === "perdi123@gmail.com" && password === "perdi") {
+                loginSuccessful = true;
+            } else if (email === "rehan@gmail.com" && password === "rehan") {
+                loginSuccessful = true;
+            } else if (email === "fauzi@gmail.com" && password === "fauzi") {
+                loginSuccessful = true;
+            }
+            else if (email === "sirojul@gmail.com" && password === "sirojul") {
+                loginSuccessful = true;
+            }
+            else if (email == "ziyad@gmail.com" && password === "ziyad") {
+                loginSuccessful = true;
+            }
+            else if (email == "admin123@gmail.com" && password === "admin1234") {
+                loginSuccessful = true;
+            }
+
+
+
+
+            if (loginSuccessful) {
+                // Jika login berhasil
+                var hasilDiv = document.getElementById("hasil");
+                if (!hasilDiv) {
+                    hasilDiv = document.createElement("div");
+                    hasilDiv.id = "hasil";
+                    document.body.appendChild(hasilDiv);
+                }
+                hasilDiv.innerHTML =
+                    "<h2>Login Berhasil</h2>" +
+                    "<p>Selamat datang, " + password + "!</p>";
+
+                // Redirect ke halaman/link setelah 2 detik
+                setTimeout(function () {
+                    window.location.href = "loby.html";
+                }, 2000);
+            } else {
+                // Jika login gagal
+                alert("Coba periksa lagi apaka benar anda !!!!");
+            }
+        });
+
+        // Tambahkan event listener untuk tombol login Google
+        document.getElementById("googleSignIn").addEventListener("click", function () {
+            var provider = new firebase.auth.GoogleAuthProvider();
+
+            firebase.auth().signInWithPopup(provider)
+                .then(function (result) {
+                    var user = result.user;
+                    console.log("Google Sign In Success:", user);
+
+                    // Sesuaikan logika setelah login berhasil
+                    alert("Google Sign In Success. Redirecting to link1.");
+
+                    window.location.href = "https://example.com/link1";
+                })
+                .catch(function (error) {
+                    console.error("Google Sign In Error:", error.message);
+                    alert("Google Sign In Error. Please try again.");
+                });
+        });
+
+        // Tambahkan event listener untuk tautan "Forgot Password"
+        document.getElementById("forgotPasswordLink").addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Munculkan dialog konfirmasi dengan input email
+            $.confirm({
+                title: 'Forgot Password',
+                content: '' +
+                    '<form action="" class="formName">' +
+                    '<div class="form-group">' +
+                    '<label for="email">Enter your email:</label>' +
+                    '<input type="email" class="email form-control" required />' +
+                    '</div>' +
+                    '</form>',
+                buttons: {
+                    formSubmit: {
+                        text: 'Submit',
+                        btnClass: 'btn-blue',
+                        action: function () {
+                            var email = this.$content.find('.email').val();
+                            // Lakukan proses reset password sesuai kebutuhan (misalnya, kirim email reset password)
+                            alert('Reset password sudah di kirim ke ' + email);
+                        }
+                    },
+                    cancel: function () {
+                        // Fungsi ini akan dipanggil ketika tombol Batal diklik.
+                    },
+                },
+                onContentReady: function () {
+                    // Fungsi ini akan dipanggil setelah formulir muncul dalam dialog.
+                    // Ini memastikan fokus pada input email.
+                    var jc = this;
+                    this.$content.find('form').on('submit', function (e) {
+                        // Jika formulir disubmit, aktifkan tombol Submit
+                        e.preventDefault();
+                        jc.$$formSubmit.trigger('click');
+                    });
+                }
+            });
+        });
+
+        // Tambahkan event listener untuk tombol register
+        document.getElementById("registerButton").addEventListener("click", function () {
+            // Redirect ke halaman registrasi atau lakukan logika registrasi di sini
+            window.location.href = "register.html"
+            alert("Redirecting to registration page.");
+            // window.location.href = "https://example.com/register";
+            window.location.href = "register.html";
+
+        });
+    </script>
+</body>
+
+</html>

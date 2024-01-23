@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Klinik Gigi - Admin</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="https://adminlte.io/themes/v3/dist/css/adminlte.min.css">
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="loby.html" class="brand-link">
+        <span class="brand-text font-weight-light ml-4">Klinik Gigi</span>
+      </a>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Dashboard -->
+            <li class="nav-item">
+              <a href="loby.html" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Dashboard
+                </p>
+              </a>
+            </li>
+
+            <!-- Booking -->
+            <li class="nav-item">
+              <a href="booking1.html" class="nav-link">
+                <i class="nav-icon far fa-calendar-alt"></i>
+                <p>
+                  Data Booking
+                </p>
+              </a>
+            </li>
+
+
+            </li>
+
+            <!-- Layanan -->
+            <li class="nav-item">
+              <a href="layanan.html" class="nav-link">
+                <i class="nav-icon fas fa-cogs"></i>
+                <p>
+                  Layanan
+                </p>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-md-12">
+              <h1 class="text-center font-weight-bold">Admin - Klinik Kesehatan Gigi Sipefara - Depok</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Klinik Gigi - Dashboard</title>
+
+        <!-- Google Font: Source Sans Pro -->
+        <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="https://adminlte.io/themes/v3/dist/css/adminlte.min.css">
+
+        <style>
+          #doctorList {
+            color: green;
+          }
+
+          #doctors:hover,
+          #simpan:hover,
+          #ganti:hover {
+            text-decoration: underline;
+          }
+
+          .form-control {
+            border: 1px solid black;
+          }
+
+          a {
+            color: #18272F;
+            position: relative;
+            text-decoration: none;
+          }
+
+          a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            border-radius: 4px;
+            background-color: #18272F;
+            bottom: 0;
+            left: 0;
+            transform-origin: right;
+            transform: scaleX(0);
+            transition: transform .3s ease-in-out;
+          }
+
+          a:hover::before {
+            transform-origin: center;
+            transform: scaleX(1);
+          }
+        </style>
+      </head>
+
+      <body class="hold-transition sidebar-mini">
+        <div class="wrapper">
+
+          <!-- ... (bagian-bagian lainnya) ... -->
+
+          <!-- Main content -->
+          <div class="content">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title">Daftar Dokter</h3>
+                    </div>
+                    <div class="card-body">
+                      <button class="btn btn-primary mb-3" id="doctors" data-toggle="modal" data-target="#addDoctorModal">Tambah Dokter</button>
+                      <div class="table-responsive">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>No.</th>
+                              <th>Nama Dokter</th>
+                              <th>Gender</th>
+                              <th>Keahlian</th>
+                              <th>Email</th>
+                              <th>No. HP Dokter</th>
+                              <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="doctorList">
+                          <!-- Data dokter akan ditampilkan di sini -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulir Modal untuk Tambah Dokter -->
+          <div class="modal fade" id="addDoctorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Tambah Dokter</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- Formulir untuk menambah dokter -->
+                  <form id="addDoctorForm">
+                    <div class="form-group">
+                      <label for="addDoctorName">Nama Dokter:</label>
+                      <input type="text" class="form-control" id="addDoctorName" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="addDoctorGender">Gender:</label>
+                      <select class="form-control" id="addDoctorGender" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="addDoctorSpecialty">Keahlian:</label>
+                      <input type="text" class="form-control" id="addDoctorSpecialty" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="addDoctorEmail">Email:</label>
+                      <input type="email" class="form-control" id="addDoctorEmail" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="addDoctorPhoneNumber">No. HP Dokter:</label>
+                      <input type="text" class="form-control" id="addDoctorPhoneNumber" required minlength="11"
+                        maxlength="13">
+                    </div>
+                    <button type="submit" id="simpan" class="btn btn-primary">Tambah Dokter</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulir Modal untuk Edit Dokter -->
+          <div class="modal fade" id="editDoctorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit Dokter</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- Formulir untuk mengedit dokter -->
+                  <form id="editDoctorForm">
+                    <div class="form-group">
+                      <label for="editDoctorName">Nama Dokter:</label>
+                      <input type="text" class="form-control" id="editDoctorName" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="editDoctorGender">Gender:</label>
+                      <select class="form-control" id="editDoctorGender" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="editDoctorSpecialty">Keahlian:</label>
+                      <input type="text" class="form-control" id="editDoctorSpecialty" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="editDoctorEmail">Email:</label>
+                      <input type="email" class="form-control" id="editDoctorEmail" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="editDoctorPhoneNumber">No. HP Dokter:</label>
+                      <input type="text" class="form-control" id="editDoctorPhoneNumber" required minlength="11"
+                        maxlength="13">
+                    </div>
+                    <button type="submit" id="ganti" class="btn btn-primary">Simpan Perubahan</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulir Modal untuk Hapus Dokter -->
+          <div class="modal fade" id="deleteDoctorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Hapus Dokter</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Apakah Anda yakin ingin menghapus dokter ini?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                  <button type="button" class="btn btn-danger" id="confirmDeleteDoctor">Hapus</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Your custom JavaScript for handling doctor data -->
+          <script src="https://adminlte.io/themes/v3/plugins/jquery/jquery.min.js"></script>
+          <script src="https://adminlte.io/themes/v3/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+          <script src="https://adminlte.io/themes/v3/dist/js/adminlte.min.js"></script>
+
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              var doctors = [
+                { name: "Dokter Gigi A", gender: "Male", specialty: "Spesialis Gigi Anak", email: "dokterA@example.com", phoneNumber: "08123456789" },
+                { name: "Dokter Gigi B", gender: "Female", specialty: "Spesialis Gigi Umum", email: "dokterB@example.com", phoneNumber: "08234567890" },
+                // Tambahkan data dokter sesuai logika aplikasi Anda
+              ];
+
+              function displayDoctors() {
+                var doctorList = document.getElementById("doctorList");
+                doctorList.innerHTML = "";
+
+                doctors.forEach(function (doctor, index) {
+                  var row = doctorList.insertRow();
+                  var cell1 = row.insertCell(0);
+                  var cell2 = row.insertCell(1);
+                  var cell3 = row.insertCell(2);
+                  var cell4 = row.insertCell(3);
+                  var cell5 = row.insertCell(4);
+                  var cell6 = row.insertCell(5);
+                  var cell7 = row.insertCell(6);
+
+                  cell1.innerHTML = index + 1;
+                  cell2.innerHTML = doctor.name;
+                  cell3.innerHTML = doctor.gender;
+                  cell4.innerHTML = doctor.specialty;
+                  cell5.innerHTML = doctor.email;
+                  cell6.innerHTML = doctor.phoneNumber;
+
+                  var editButton = document.createElement("button");
+                  editButton.innerHTML = "Edit";
+                  editButton.className = "btn btn-warning btn-sm";
+                  editButton.onclick = function () {
+                    openEditModal(index);
+                  };
+
+                  var deleteButton = document.createElement("button");
+                  deleteButton.innerHTML = "Delete";
+                  deleteButton.className = "btn btn-danger btn-sm";
+                  deleteButton.onclick = function () {
+                    openDeleteModal(index);
+                  };
+
+                  cell7.appendChild(editButton);
+                  cell7.appendChild(deleteButton);
+                });
+              }
+
+              function openEditModal(index) {
+                var doctor = doctors[index];
+                document.getElementById("editDoctorName").value = doctor.name;
+                document.getElementById("editDoctorGender").value = doctor.gender;
+                document.getElementById("editDoctorSpecialty").value = doctor.specialty;
+                document.getElementById("editDoctorEmail").value = doctor.email;
+                document.getElementById("editDoctorPhoneNumber").value = doctor.phoneNumber;
+
+                $("#editDoctorModal").modal("show");
+
+                document.getElementById("editDoctorForm").onsubmit = function (event) {
+                  event.preventDefault();
+                  doctors[index] = {
+                    name: document.getElementById("editDoctorName").value,
+                    gender: document.getElementById("editDoctorGender").value,
+                    specialty: document.getElementById("editDoctorSpecialty").value,
+                    email: document.getElementById("editDoctorEmail").value,
+                    phoneNumber: document.getElementById("editDoctorPhoneNumber").value,
+                  };
+                  $("#editDoctorModal").modal("hide");
+                  displayDoctors();
+                };
+              }
+
+              function openDeleteModal(index) {
+                $("#deleteDoctorModal").modal("show");
+
+                document.getElementById("confirmDeleteDoctor").onclick = function () {
+                  deleteDoctor(index);
+                };
+              }
+
+              function deleteDoctor(index) {
+                doctors.splice(index, 1);
+                displayDoctors();
+                $("#deleteDoctorModal").modal("hide");
+              }
+
+              function addDoctor(name, gender, specialty, email, phoneNumber) {
+                doctors.push({ name: name, gender: gender, specialty: specialty, email: email, phoneNumber: phoneNumber });
+                displayDoctors();
+                $("#addDoctorModal").modal("hide");
+              }
+
+              document.getElementById("addDoctorForm").onsubmit = function (event) {
+                event.preventDefault();
+                var name = document.getElementById("addDoctorName").value;
+                var gender = document.getElementById("addDoctorGender").value;
+                var specialty = document.getElementById("addDoctorSpecialty").value;
+                var email = document.getElementById("addDoctorEmail").value;
+                var phoneNumber = document.getElementById("addDoctorPhoneNumber").value;
+                addDoctor(name, gender, specialty, email, phoneNumber);
+              };
+
+              displayDoctors();
+            });
+          </script>
+      </body>
+
+      </html>
